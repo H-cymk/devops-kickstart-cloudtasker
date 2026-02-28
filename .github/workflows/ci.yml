@@ -14,8 +14,5 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Simulate Build
-      run: |
-        echo "Starting simulated CI pipeline..."
-        echo "All features are in develop"
-        echo "Simulated tests complete ✅"
+    - name: Safe placeholder step
+      run: echo "CI pipeline running successfully! ✅"
