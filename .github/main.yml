@@ -1,4 +1,24 @@
+name: CD Pipeline
+
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Simulate deployment
+        run: |
+          echo "🚀 Starting deployment..."
+          echo "Building production artifacts..."
+          sleep 2
+          echo "Deploying to production server..."
+          sleep 2
+          echo "✅ Deployment successful!"
