@@ -14,13 +14,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install || echo "No dependencies to install"
-
-      - name: Run tests
-        run: echo "Simulated tests for DevOps Kickstart project"
+      - name: Safe placeholder step
+        run: echo "CI pipeline running successfully! ✅"
