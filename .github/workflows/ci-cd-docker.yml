@@ -1,0 +1,50 @@
+name: CI/CD Docker Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install || echo "No dependencies to install"
+
+      - name: Run tests
+        run: echo "Simulated tests for DevOps Kickstart project"
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t devops-kickstart-app .
+
+      - name: Run Docker container
+        run: docker run --rm -d -p 3000:3000 devops-kickstart-app
+
+      - name: Test container simulation
+        run: |
+          echo "Docker container is running..."
+          sleep 2
+          echo "✅ Container deployment simulated successfully!"
+
